@@ -1,0 +1,28 @@
+.order_btn_wrapper {
+  height: 35px;
+  width: 147px;
+  background-color: var(--black);
+  color: var(--yellow);
+  border-color: var(--yellow);
+  border-radius: 7px;
+  border-style: solid;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.order_counter_btn {
+  font-size: 26px;
+  background-color: var(--black);
+  color: var(--yellow);
+  border-style: none;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+
+.count_of_items {
+  background-color: var(--yellow);
+  color: var(--black);
+  font-weight: bold;
+  border-radius: 3px;
+}
