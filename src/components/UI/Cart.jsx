@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
+import { useStore } from '../../app/store';
 import style from './Cart.module.css';
 import OrderButton from './OrderButton';
 
 function Cart(props) {
+  const addToCart = useStore().addToCart;
+
   const [orderCounter, setOrderCounter] = useState(0);
   let temp = orderCounter;
 
-  const orderHandler = () => {};
+  const orderHandler = () => {
+    setOrderCounter((temp += 1));
+    addToCart();
+  };
   console.log(orderCounter);
   return (
     <div className={style.cart_wrapper}>
@@ -19,10 +25,7 @@ function Cart(props) {
         <div>{props.description}</div>
         <div className={style.price}>{props.price}</div>
         {orderCounter < 1 ? (
-          <button
-            onClick={() => setOrderCounter((temp += 1))}
-            className={style.buy_button}
-          >
+          <button onClick={() => orderHandler()} className={style.buy_button}>
             В КОШИК
           </button>
         ) : (
