@@ -1,13 +1,28 @@
-import React, { useState } from 'react';
+import { nanoid } from 'nanoid';
+import React, { memo, useState } from 'react';
+import { useStore } from '../../app/store';
 import style from './Cart.module.css';
 import OrderButton from './OrderButton';
+import Button from './Button';
 
 function Cart(props) {
+  const { incrementCartCount, addId, deleteId, ids } = useStore();
+
   const [orderCounter, setOrderCounter] = useState(0);
   let temp = orderCounter;
 
-  const orderHandler = () => {};
-  console.log(orderCounter);
+  const orderAddHandler = () => {
+    setOrderCounter((temp += 1));
+    incrementCartCount();
+    addId(props.id);
+    console.log(ids);
+  };
+
+  const orderDeleteHandler = () => {
+    setOrderCounter((temp -= 1));
+    deleteId(props.id);
+  };
+
   return (
     <div className={style.cart_wrapper}>
       <div className={style.img_wrapper}>
@@ -19,14 +34,19 @@ function Cart(props) {
         <div>{props.description}</div>
         <div className={style.price}>{props.price}</div>
         {orderCounter < 1 ? (
-          <button
-            onClick={() => setOrderCounter((temp += 1))}
-            className={style.buy_button}
+          <Button
+            onClick={() => orderAddHandler()}
+            // className={style.buy_button}
           >
             В КОШИК
-          </button>
+          </Button>
         ) : (
-          <OrderButton temp={temp} setOrderCounter={setOrderCounter} />
+          <OrderButton
+            id={props.id}
+            temp={temp}
+            setOrderCounter={setOrderCounter}
+            orderDeleteHandler={orderDeleteHandler}
+          />
         )}
       </div>
     </div>

@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import React from 'react';
 import Cart from '../UI/Cart';
 import About from './About';
@@ -12,7 +13,7 @@ let state = [
     description:
       'Філадельфія з лососем, кранч із креветкою, фелікс рол з лососем.',
     price: '699 ₴',
-    id: 1,
+    id: nanoid(),
   },
   {
     image:
@@ -22,7 +23,7 @@ let state = [
     description:
       'Філадельфія з лососем, каліфорнія з вуграм у кунжуті, кранч з креветкою.',
     price: '670 ₴',
-    id: 2,
+    id: nanoid(),
   },
   {
     image:
@@ -32,7 +33,7 @@ let state = [
     description:
       'Ніжний лосось, запечений із креветкою, запечений із крабовим міксом.',
     price: '710 ₴',
-    id: 3,
+    id: nanoid(),
   },
   {
     image:
@@ -42,7 +43,7 @@ let state = [
     description:
       'Філадельфія з лососем, кранч з креветкою, каліфорнія з копченим лососем у кунжуті.',
     price: '850 ₴',
-    id: 4,
+    id: nanoid(),
   },
   {
     image:
@@ -51,7 +52,7 @@ let state = [
     name: 'Рисові чіпси',
     description: 'Рисові чіпси',
     price: '60 ₴',
-    id: 5,
+    id: nanoid(),
   },
 ];
 
@@ -65,6 +66,7 @@ function Main() {
         description={item.description}
         price={item.price}
         key={item.id}
+        id={item.id}
       />
     );
   });

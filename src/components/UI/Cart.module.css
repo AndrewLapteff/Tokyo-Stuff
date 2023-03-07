@@ -55,19 +55,4 @@
 .price {
   color: var(--yellow);
   font-size: 20px;
-  /* font-weight: 600; */
-}
-
-.buy_button {
-  font-size: 27px;
-  color: #101820FF;
-  background-color: #FEE715FF;
-  border-radius: 7px;
-  padding: 3px 15px 3px 15px;
-  cursor: pointer;
-}
-
-.buy_button:hover {
-  background-color: rgba(254, 231, 21, 0.821);
-
 }

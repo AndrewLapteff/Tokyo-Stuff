@@ -12,11 +12,11 @@
 }
 
 .order_counter_btn {
+  background-color: transparent;
   font-size: 26px;
-  background-color: var(--black);
   color: var(--yellow);
   border-style: none;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
   cursor: pointer;
 }
 

@@ -25,3 +25,20 @@
   font-weight: bold;
   border-radius: 3px;
 }
+
+.cart_btn {
+  text-decoration: none;
+  color: var(--black);
+  background-color: var(--black);
+  color: var(--yellow);
+  cursor: pointer;
+  padding: 10px 20px 10px 20px;
+  border-radius: 5px;
+  font-size: 17px;
+  display: flex;
+}
+
+
+.cart_btn:hover {
+  background-color: rgb(29, 41, 53);
+}
