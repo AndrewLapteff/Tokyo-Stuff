@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+<<<<<<< HEAD
 import { devtools } from 'zustand/middleware';
 
 export const useStore = create(
@@ -36,3 +37,12 @@ export const useStore = create(
     },
   }))
 );
+=======
+
+export const useStore = create((set) => ({
+  items: 0,
+
+  addToCart: (number) => set((state) => ({ items: (state.items += 1) })),
+  delFromCart: (number) => set((state) => ({ items: (state.items -= 1) })),
+}));
+>>>>>>> 8d2c7b54e91a2da9a78999b2f463ba3cdc6ad0d5
