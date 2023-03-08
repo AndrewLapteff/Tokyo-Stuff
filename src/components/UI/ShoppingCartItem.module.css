@@ -9,10 +9,12 @@
   border-width: 1px;
   align-items: center;
   position: relative;
+  margin-top: 12px;
 }
 
 .item_bio {
   display: flex;
+  /* flex-grow: .9; */
 }
 
 .item_close {
@@ -20,12 +22,13 @@
   right: -10px;
   top: -10px;
   background-color: rgb(255, 38, 0);
-  border-radius: 100px;
-  /* padding: 10px; */
+  border-radius: 50%;
   border-style: none;
   color: white;
   font-size: 20px;
   cursor: pointer;
+  padding-bottom: 5px;
+  /* z-index: 1000; */
 }
 
 .item_description {
@@ -40,16 +43,27 @@
 }
 
 .item_wrapper .item_name {
-  font-size: 20px;
+  font-size: 28px;
   color: rgb(255, 255, 255);
 }
 
 .item_wrapper .item_grams {
   color: rgb(255, 255, 255);
-
+  font-size: 20px;
 }
 
-.item_wrapper .item_price {
+.item_wrapper .item_count_price {
+  width: 75px;
   font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* justify-content: center; */
+  color: var(--yellow);
+}
+
+.item_wrapper .item_count_price .count {
+  font-size: 20px;
+  /* margin-right: 10px; */
   color: rgb(255, 255, 255);
 }

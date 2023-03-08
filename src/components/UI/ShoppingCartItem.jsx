@@ -1,24 +1,38 @@
 import React, { Fragment } from 'react';
+import { useStore } from '../../app/store';
+import OrderButton from './OrderButton';
 import style from './ShoppingCartItem.module.css';
 
-function ShoppingCartItem() {
+function ShoppingCartItem(props) {
+  const deleteId = useStore().deleteId;
   return (
     <Fragment>
       <div className={style.item_wrapper}>
-        <button className={style.item_close}>×</button>
+        <button onClick={() => deleteId(props.id)} className={style.item_close}>
+          ×
+        </button>
         <div className={style.item_bio}>
           <img
             className={style.item_image}
-            src='https://x100-venus-sm-ua.gumlet.io/SKU/SUSHI-MASTER/%D0%A1%D0%B5%D1%82%D0%B8/23206F91-3101-11ED-8371-B11A020B59BC-1969%D1%851100_0005_%D0%A1%D0%B5%D1%82-%D0%91%D1%96%D0%BD%D0%B3%D0%BE.png?alt=media&token=6a4b6b9c-c74e-45a1-85b4-96608e0c142e&w=800&format=webp&mode=fit&q=59'
+            src={`${props.image}`}
             alt='img'
             width={150}
           />
           <div className={style.item_description}>
-            <div className={style.item_name}>Сет Токіо</div>
-            <div className={style.item_grams}>760 г</div>
+            <div className={style.item_name}>{props.name}</div>
+            <div className={style.item_grams}>{props.grams}</div>
           </div>
         </div>
-        <div className={style.item_price}>699 ₴</div>
+        <OrderButton
+          border_color={'rgba(255, 255, 255, 0.600)'}
+          bg_color={'rgba(255, 255, 255, 0.850)'}
+          color={'rgba(255, 255, 255, 0.950)'}
+          id={props.id}
+        ></OrderButton>
+        <div className={style.item_count_price}>
+          <div className={style.count}>{props.count} шт.</div>
+          {props.price * props.count} ₴
+        </div>
       </div>
     </Fragment>
   );
