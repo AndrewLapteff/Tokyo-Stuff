@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from './Button';
 import style from './ShoppingCartModal.module.css';
 import ReactDOM from 'react-dom';
@@ -6,6 +6,7 @@ import ShoppingCartItem from './ShoppingCartItem';
 import { useStore } from '../../app/store';
 
 function ShoppingCartModal(props) {
+  const [closeAnim, setCloseAnim] = useState('');
   let { ids, state } = useStore();
   let idsCopy = Object.assign(ids);
   idsCopy = Object.entries(idsCopy);
@@ -23,8 +24,9 @@ function ShoppingCartModal(props) {
     });
     return result1;
   });
-
+  let wholePrice = 0;
   const shoppingCartItems = shoppingCartStore.map((item) => {
+    wholePrice += item.price * item.count;
     return (
       <ShoppingCartItem
         image={item.image}
@@ -44,6 +46,8 @@ function ShoppingCartModal(props) {
       className={style.modal_background}
       onClick={(e) => {
         if (e.target.className == `${style.modal_background}`) {
+          // setCloseAnim('scale-down 0.2s');
+          // setTimeout(() => props.shoppingCartHandler(), 200);
           props.shoppingCartHandler();
         }
       }}
@@ -58,6 +62,7 @@ function ShoppingCartModal(props) {
         <h2>Корзина</h2>
         <div className={style.modal_content}>{shoppingCartItems}</div>
         <div className={style.modal_buttons}>
+          <div className={style.wholePrice}>{wholePrice} ₴</div>
           <Button>Купити</Button>
         </div>
       </div>

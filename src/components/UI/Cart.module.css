@@ -27,6 +27,7 @@
   border-top-right-radius: 6px;
   top: 0;
   width: 400px;
+  cursor: pointer;
 }
 
 .description {
@@ -36,7 +37,7 @@
   /* text-align: start; */
   justify-content: space-around;
   height: 220px;
-
+  text-align: center;
   align-items: center;
 }
 
@@ -46,6 +47,7 @@
 
 .name {
   font-size: 30px;
+  cursor: pointer;
 }
 
 .description {

@@ -13,7 +13,7 @@ function App() {
       document.body.style.overflow = 'hidden';
     }
     if (isShoppingCartOpen) {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = 'overlay';
     }
   };
 

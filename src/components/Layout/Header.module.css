@@ -10,7 +10,7 @@
 
 .logo {
   margin-left: 3rem;
-  font-size: 25px;
+  font-size: 30px;
   text-decoration: none;
   color: var(--black);
 }
@@ -36,6 +36,7 @@
   border-radius: 5px;
   font-size: 17px;
   display: flex;
+  transition-duration: .5s;
 }
 
 

@@ -1,42 +1,65 @@
-import { nanoid } from 'nanoid';
-import React, { memo, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useStore } from '../../app/store';
 import style from './Cart.module.css';
 import OrderButton from './OrderButton';
 import Button from './Button';
+import CartInfo from './CartInfo';
 
-function Cart(props) {
+const Cart = React.memo((props) => {
+  const [isOpenModal, setModalStatus] = useState(false);
   const { addId, decrementId, ids } = useStore();
 
-  const [orderCounter, setOrderCounter] = useState(0);
-  let temp = orderCounter;
+  let [orderCounter, setOrderCounter] = useState(0);
 
-  const orderAddHandler = () => {
-    setOrderCounter((temp += 1));
+  const orderAddHandler = useCallback(() => {
+    setOrderCounter((orderCounter += 1));
     addId(props.id);
+  }, [addId, orderCounter, setOrderCounter, props.id]);
+
+  const orderDeleteHandler = useCallback(() => {
+    setOrderCounter((orderCounter -= 1));
+    decrementId(props.id);
+  }, [decrementId, orderCounter, setOrderCounter, props.id]);
+
+  const modalHandler = () => {
+    setModalStatus(!isOpenModal);
   };
 
-  const orderDeleteHandler = () => {
-    setOrderCounter((temp -= 1));
-    decrementId(props.id);
-  };
+  let description = props.description;
+
+  if (props.description.length > 80) {
+    description = props.description.slice(0, 80) + '...';
+  }
 
   return (
     <div className={style.cart_wrapper}>
-      <div className={style.img_wrapper}>
+      {isOpenModal && (
+        <CartInfo
+          modalHandler={modalHandler}
+          image={props.image}
+          name={props.name}
+          grams={props.grams}
+          price={props.price}
+          description={props.description}
+        />
+      )}
+
+      <div onClick={modalHandler} className={style.img_wrapper}>
         <img className={style.image} src={props.image} alt='image-of-food' />
       </div>
       <div className={style.description}>
-        <div className={style.name}>{props.name}</div>
+        <div onClick={modalHandler} className={style.name}>
+          {props.name}
+        </div>
         <div className={style.grams}>{props.grams}</div>
-        <div>{props.description}</div>
-        <div className={style.price}>{props.price}</div>
+        <div>{description}</div>
+        <div className={style.price}>{props.price} ₴</div>
         {ids[props.id] == undefined ? ( //? там undefined!
           <Button onClick={() => orderAddHandler()}>В КОШИК</Button>
         ) : (
           <OrderButton
             id={props.id}
-            temp={temp}
+            orderCounter={orderCounter}
             setOrderCounter={setOrderCounter}
             orderDeleteHandler={orderDeleteHandler}
           />
@@ -44,6 +67,6 @@ function Cart(props) {
       </div>
     </div>
   );
-}
+});
 
 export default Cart;

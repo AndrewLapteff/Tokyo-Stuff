@@ -18,11 +18,14 @@
   border-style: none;
   margin-bottom: 5px;
   cursor: pointer;
+  user-select: none;
 }
 
 .count_of_items {
+  animation: fade-out .2s linear;
   background-color: var(--yellow);
   color: var(--black);
   font-weight: bold;
   border-radius: 3px;
+  user-select: none;
 }

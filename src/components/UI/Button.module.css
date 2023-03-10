@@ -5,8 +5,9 @@
   border-radius: 7px;
   padding: 3px 15px 3px 15px;
   cursor: pointer;
+  transition-duration: .2s;
 }
 
 .button:hover {
-  background-color: rgba(254, 231, 21, 0.821);
+  background-color: rgba(254, 231, 21, 0.716);
 }

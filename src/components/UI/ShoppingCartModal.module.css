@@ -25,6 +25,7 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
+  animation: scale-up .2s ease-out;
 }
 
 .modal_content {
@@ -42,11 +43,22 @@
   background-color: var(--black);
   border-style: none;
   color: var(--yellow);
+  display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .modal_buttons Button {
   margin: 0px 10px 5px 10px;
+}
+
+.wholePrice {
+  margin-top: 5px;
+  font-size: 25px;
+  font-weight: 600;
+  /* display: flex; */
+  /* justify-content: flex-end; */
+  /* width: 87px; */
 }
 
 .modal_close_btn {
@@ -58,4 +70,28 @@
   color: var(--yellow);
   font-size: 35px;
   cursor: pointer;
+}
+
+@keyframes scale-up {
+  0% {
+    scale: 65%;
+    opacity: 0%;
+  }
+
+  100% {
+    scale: 100%;
+    opacity: 100%;
+  }
+}
+
+@keyframes scale-down {
+  0% {
+    opacity: 100%;
+    scale: 100%;
+  }
+
+  100% {
+    opacity: 0%;
+    scale: 65%;
+  }
 }

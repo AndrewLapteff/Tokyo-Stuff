@@ -15,13 +15,16 @@
   --black: #101820FF;
   padding: 0;
   margin: 0;
-
+  /* overflow: */
 
 }
 
+/* html {
+  overflow-y: overlay;
+} */
+
 ::-webkit-scrollbar {
   background-color: var(--black);
-  /* width: 10px; */
   width: 4px;
 }
 

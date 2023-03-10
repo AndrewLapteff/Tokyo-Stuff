@@ -5,7 +5,7 @@ import Cart from '../UI/Cart';
 import About from './About';
 import style from './Main.module.css';
 
-function Main() {
+const Main = () => {
   let state = useStore().state;
   const sets = state.map((item) => {
     return (
@@ -27,6 +27,6 @@ function Main() {
       <div className={style.carts_wrapper}>{sets}</div>
     </main>
   );
-}
+};
 
 export default Main;
