@@ -1,31 +1,15 @@
 import Header from './components/Layout/Header';
 import style from './App.module.css';
 import Main from './components/Layout/Main';
-import React, { useState } from 'react';
-import ShoppingCartModal from './components/UI/ShoppingCartModal';
+import React from 'react';
 
-function App() {
-  const [isShoppingCartOpen, setShoppingCartStatus] = useState(false);
-
-  const shoppingCartHandler = () => {
-    setShoppingCartStatus(!isShoppingCartOpen);
-    if (!isShoppingCartOpen) {
-      document.body.style.overflow = 'hidden';
-    }
-    if (isShoppingCartOpen) {
-      document.body.style.overflow = 'overlay';
-    }
-  };
-
+const App = React.memo(() => {
   return (
     <div className={style.App}>
-      {isShoppingCartOpen && (
-        <ShoppingCartModal shoppingCartHandler={shoppingCartHandler} />
-      )}
-      <Header shoppingCartHandler={shoppingCartHandler} />
+      <Header />
       <Main />
     </div>
   );
-}
+});
 
 export default App;

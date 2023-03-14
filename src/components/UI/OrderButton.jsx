@@ -1,21 +1,21 @@
-import React from 'react';
-import style from './OrderButton.module.css';
+import React, { useState } from 'react';
 import { useStore } from '../../app/store';
+import style from './OrderButton.module.css';
 
 const OrderButton = React.memo((props) => {
-  const { addId, decrementId, ids } = useStore();
+  let [count, setCount] = useState(0);
+  const idCount = useStore((state) => state.ids[props.id]);
+  const addId = useStore((state) => state.addId);
+  const decrementId = useStore((state) => state.decrementId);
 
-  let count;
-  if (ids[props.id]) {
-    count = ids[props.id];
-  }
-
-  const addItem = () => {
+  const addHandler = () => {
     addId(props.id);
+    setCount((count += 1));
   };
 
-  const deleteItem = () => {
+  const delHandler = () => {
     decrementId(props.id);
+    if (count > 0) setCount((count -= 1));
   };
 
   return (
@@ -24,8 +24,8 @@ const OrderButton = React.memo((props) => {
       className={style.order_btn_wrapper}
     >
       <button
+        onClick={delHandler}
         style={{ color: `${props.color}` }}
-        onClick={() => deleteItem()}
         className={style.order_counter_btn}
       >
         -
@@ -34,11 +34,11 @@ const OrderButton = React.memo((props) => {
         style={{ backgroundColor: `${props.bg_color}` }}
         className={style.count_of_items}
       >
-        ⠀{count}⠀
+        ⠀{idCount}⠀
       </div>
       <button
+        onClick={addHandler}
         style={{ color: `${props.color}` }}
-        onClick={() => addItem()}
         className={style.order_counter_btn}
       >
         +

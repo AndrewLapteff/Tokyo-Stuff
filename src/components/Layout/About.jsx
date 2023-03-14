@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './About.module.css';
 
-function About() {
+const About = React.memo(() => {
   return (
     <div className={style.about_wrapper}>
       <span className={style.about}>Tokyo Stuff - №1 в Україні</span>
@@ -9,6 +9,6 @@ function About() {
       <span className={style.tagline}>Знаємо як смачніше</span>
     </div>
   );
-}
+});
 
 export default About;

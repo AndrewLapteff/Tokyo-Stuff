@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import { useStore } from '../../app/store';
-import OrderButton from './OrderButton';
 import style from './ShoppingCartItem.module.css';
-
-function ShoppingCartItem(props) {
-  const deleteId = useStore().deleteId;
+import Buttons from './Buttons';
+import OrderButton from './OrderButton';
+const ShoppingCartItem = React.memo((props) => {
+  const deleteId = useStore((state) => state.deleteId);
   return (
     <Fragment>
       <div className={style.item_wrapper}>
@@ -15,7 +15,7 @@ function ShoppingCartItem(props) {
           <img
             className={style.item_image}
             src={`${props.image}`}
-            alt='img'
+            alt="img"
             width={150}
           />
           <div className={style.item_description}>
@@ -36,6 +36,6 @@ function ShoppingCartItem(props) {
       </div>
     </Fragment>
   );
-}
+});
 
 export default ShoppingCartItem;

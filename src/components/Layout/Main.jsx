@@ -1,12 +1,13 @@
 import { nanoid } from 'nanoid';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useStore } from '../../app/store';
 import Cart from '../UI/Cart';
 import About from './About';
 import style from './Main.module.css';
 
-const Main = () => {
-  let state = useStore().state;
+const Main = React.memo(() => {
+  const state = useStore((store) => store.state);
+
   const sets = state.map((item) => {
     return (
       <Cart
@@ -27,6 +28,6 @@ const Main = () => {
       <div className={style.carts_wrapper}>{sets}</div>
     </main>
   );
-};
+});
 
 export default Main;

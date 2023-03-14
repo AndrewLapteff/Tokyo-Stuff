@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from './Button';
 import style from './ShoppingCartModal.module.css';
 import ReactDOM from 'react-dom';
 import ShoppingCartItem from './ShoppingCartItem';
 import { useStore } from '../../app/store';
 
-function ShoppingCartModal(props) {
-  const [closeAnim, setCloseAnim] = useState('');
-  let { ids, state } = useStore();
+const ShoppingCartModal = (props) => {
+  let ids = useStore().ids;
+  let state = useStore().state;
   let idsCopy = Object.assign(ids);
   idsCopy = Object.entries(idsCopy);
 
@@ -24,6 +24,7 @@ function ShoppingCartModal(props) {
     });
     return result1;
   });
+
   let wholePrice = 0;
   const shoppingCartItems = shoppingCartStore.map((item) => {
     wholePrice += item.price * item.count;
@@ -69,6 +70,6 @@ function ShoppingCartModal(props) {
     </div>,
     document.getElementById('modal-root')
   );
-}
+};
 
 export default ShoppingCartModal;

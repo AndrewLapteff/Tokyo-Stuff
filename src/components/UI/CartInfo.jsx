@@ -3,7 +3,7 @@ import style from './CartInfo.module.css';
 import ReactDOM from 'react-dom';
 import ReactImageMagnify from 'react-image-magnify';
 
-function CartInfo(props) {
+const CartInfo = React.memo((props) => {
   const url = props.image;
   return ReactDOM.createPortal(
     <div
@@ -47,6 +47,6 @@ function CartInfo(props) {
     </div>,
     document.getElementById('modal-root')
   );
-}
+});
 
 export default CartInfo;

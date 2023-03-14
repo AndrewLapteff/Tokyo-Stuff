@@ -1,25 +1,18 @@
-import React, { useCallback, useState } from 'react';
-import { useStore } from '../../app/store';
+import React, { useState } from 'react';
 import style from './Cart.module.css';
+import CartInfo from './CartInfo';
+import { useStore } from '../../app/store';
 import OrderButton from './OrderButton';
 import Button from './Button';
-import CartInfo from './CartInfo';
 
 const Cart = React.memo((props) => {
   const [isOpenModal, setModalStatus] = useState(false);
-  const { addId, decrementId, ids } = useStore();
+  const id = useStore((state) => state.ids[props.id]);
+  const addId = useStore((state) => state.addId);
 
-  let [orderCounter, setOrderCounter] = useState(0);
-
-  const orderAddHandler = useCallback(() => {
-    setOrderCounter((orderCounter += 1));
+  const addHandler = () => {
     addId(props.id);
-  }, [addId, orderCounter, setOrderCounter, props.id]);
-
-  const orderDeleteHandler = useCallback(() => {
-    setOrderCounter((orderCounter -= 1));
-    decrementId(props.id);
-  }, [decrementId, orderCounter, setOrderCounter, props.id]);
+  };
 
   const modalHandler = () => {
     setModalStatus(!isOpenModal);
@@ -43,9 +36,8 @@ const Cart = React.memo((props) => {
           description={props.description}
         />
       )}
-
       <div onClick={modalHandler} className={style.img_wrapper}>
-        <img className={style.image} src={props.image} alt='image-of-food' />
+        <img className={style.image} src={props.image} alt="image-of-food" />
       </div>
       <div className={style.description}>
         <div onClick={modalHandler} className={style.name}>
@@ -54,15 +46,11 @@ const Cart = React.memo((props) => {
         <div className={style.grams}>{props.grams}</div>
         <div>{description}</div>
         <div className={style.price}>{props.price} ₴</div>
-        {ids[props.id] == undefined ? ( //? там undefined!
-          <Button onClick={() => orderAddHandler()}>В КОШИК</Button>
+
+        {id == undefined ? (
+          <Button onClick={() => addHandler()}>В КОШИК</Button>
         ) : (
-          <OrderButton
-            id={props.id}
-            orderCounter={orderCounter}
-            setOrderCounter={setOrderCounter}
-            orderDeleteHandler={orderDeleteHandler}
-          />
+          <OrderButton id={props.id} />
         )}
       </div>
     </div>

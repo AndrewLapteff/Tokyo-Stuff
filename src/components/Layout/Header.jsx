@@ -1,30 +1,39 @@
 import BasketIcon from '../UI/BasketIcon';
 import style from './Header.module.css';
-import React from 'react';
-import { useStore } from '../../app/store';
+import React, { useState } from 'react';
+import CartsCount from '../UI/CartsCount';
+import ShoppingCartModal from '../UI/ShoppingCartModal';
 
-function Header(props) {
-  const ids = useStore().ids;
+const Header = React.memo((props) => {
+  const [isShoppingCartOpen, setShoppingCartStatus] = useState(false);
 
-  let cartsCount = 0;
-  if (Object.keys(ids).length != 0) {
-    cartsCount = Object.values(ids);
-    cartsCount = cartsCount.reduce((prev, item) => prev + item, 0);
-  }
-
+  const shoppingCartHandler = () => {
+    setShoppingCartStatus(!isShoppingCartOpen);
+    if (!isShoppingCartOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+    if (isShoppingCartOpen) {
+      document.body.style.overflow = 'overlay';
+    }
+  };
   return (
     <header className={style.header_wrapper}>
+      {isShoppingCartOpen && (
+        <ShoppingCartModal shoppingCartHandler={shoppingCartHandler} />
+      )}
       <a href='#' className={style.logo}>
         Tokyo Stuff
       </a>
-      <div className={style.buy_button}>
+      <div onClick={shoppingCartHandler} className={style.buy_button}>
         <button onClick={props.shoppingCartHandler} className={style.cart_btn}>
           {<BasketIcon />}⠀Корзина⠀
-          <span className={style.count_of_items}>⠀{cartsCount}⠀</span>
+          <span className={style.count_of_items}>
+            ⠀<CartsCount />⠀
+          </span>
         </button>
       </div>
     </header>
   );
-}
+});
 
 export default Header;
