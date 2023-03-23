@@ -1,0 +1,17 @@
+.nav_wrapper {
+  border-style: solid;
+  border-color: var(--yellow);
+  margin: 10px;
+  height: 40px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  margin: 0px 10px 0px 10px;
+  font-size: 20px;
+  text-decoration: none;
+  color: var(--yellow);
+}

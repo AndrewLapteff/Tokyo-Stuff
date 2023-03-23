@@ -6,8 +6,8 @@ import ShoppingCartItem from './ShoppingCartItem';
 import { useStore } from '../../app/store';
 
 const ShoppingCartModal = (props) => {
-  let ids = useStore().ids;
-  let state = useStore().state;
+  let ids = useStore().ids; //!
+  let state = useStore().state; //!
   let idsCopy = Object.assign(ids);
   idsCopy = Object.entries(idsCopy);
 

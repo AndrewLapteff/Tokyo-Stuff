@@ -1,13 +1,14 @@
 .button {
   font-size: 27px;
-  color: #101820FF;
-  background-color: #FEE715FF;
+  color: #101820ff;
+  background-color: var(--yellow);
   border-radius: 7px;
   padding: 3px 15px 3px 15px;
   cursor: pointer;
-  transition-duration: .2s;
+  transition-duration: 0.2s;
+  height: 40px;
 }
 
 .button:hover {
-  background-color: rgba(254, 231, 21, 0.716);
+  background-color: var(--yellow_hover);
 }

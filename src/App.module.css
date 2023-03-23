@@ -1,8 +1,7 @@
 .App {
-  background-color: var(--black);
+  /* background-color: var(--black); */
   height: 100%;
 }
-
 
 @media (min-width: 2400px) {
   .App {

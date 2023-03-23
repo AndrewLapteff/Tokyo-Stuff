@@ -14,7 +14,7 @@
 
 .modal_content {
   /* position: absolute; */
-  animation: scale .3s;
+  animation: scale 0.3s;
   display: flex;
   flex-direction: row;
   /* pointer-events: all; */
@@ -41,10 +41,11 @@
 }
 
 .item_title {
-  font-size: 25px;
+  font-size: 35px;
 }
 
 .item_description {
+  font-size: 20px;
   text-align: center;
 }
 

@@ -9,6 +9,7 @@ function CartsCount() {
     cartsCount = Object.values(ids);
     cartsCount = cartsCount.reduce((prev, item) => prev + item, 0);
   }
+
   return <Fragment>{cartsCount}</Fragment>;
 }
 

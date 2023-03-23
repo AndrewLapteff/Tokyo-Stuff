@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import CartsCount from '../UI/CartsCount';
 import ShoppingCartModal from '../UI/ShoppingCartModal';
 
-const Header = React.memo((props) => {
+const Header = React.memo(() => {
   const [isShoppingCartOpen, setShoppingCartStatus] = useState(false);
 
   const shoppingCartHandler = () => {
@@ -21,11 +21,11 @@ const Header = React.memo((props) => {
       {isShoppingCartOpen && (
         <ShoppingCartModal shoppingCartHandler={shoppingCartHandler} />
       )}
-      <a href='#' className={style.logo}>
+      <a href="#" className={style.logo}>
         Tokyo Stuff
       </a>
       <div onClick={shoppingCartHandler} className={style.buy_button}>
-        <button onClick={props.shoppingCartHandler} className={style.cart_btn}>
+        <button className={style.cart_btn}>
           {<BasketIcon />}⠀Корзина⠀
           <span className={style.count_of_items}>
             ⠀<CartsCount />⠀

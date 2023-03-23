@@ -1,0 +1,17 @@
+.error_message_wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.error_message {
+  color: var(--yellow);
+  font-size: 30px;
+}
+
+.status_text {
+  color: var(--yellow);
+  font-size: 25px;
+}
